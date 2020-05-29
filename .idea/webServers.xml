@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="340d262b-f546-4b70-95b1-c2c13e701097" name="abc" url="http://localhost:2411/eProject">
+        <fileTransfer port="0" mountedRoot="C:\xampp\htdocs\eProject" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>
