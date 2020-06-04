@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: o;
+    font-size: 16px;
+    font-family: Segoe UI;
+}
+
+a {
+    color: black;
+}
+
+@media only screen and (min-width: 1024px){
+    .logo {
+        width: 70px;
+    }
+
+    .bannerTasha {
+        width: 200px;
+    }
+
+    .userIcon {
+        width: 25px;
+    }
+
+    .header-login {
+        margin-top: 20px;
+    }
+
+    .search {
+        margin-top: 20px;
+        border: none;
+        border-bottom: 1px solid #070707;
+        width: 400px;
+        outline: none;
+        margin-left: 30px;
+        
+    }
+
+    .submit {
+        background-color: white;
+        border:none;
+    }
+
+    .menu ul {
+        list-style-type: none;
+        font-weight: 800;
+        background-color: #E1E1E1;
+        height: 40px;
+    }
+
+    .menu ul li {
+        display: inline;
+        padding: 0 80px;
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    .category {
+        width: 100%;
+        height: 150px;
+        background-color: #B4B4B4;
+        border-bottom-right-radius: 10px;
+    }
+
+    .subcategory {
+        width: 130px;
+        height: 130px;
+        margin: 4px;
+        background-color: white;
+    }
+
+    .icon {
+        height: 16px;
+        border: none;
+        margin-bottom: 5px;
+    }
+
+    .product {
+        height: 200px;
+    }
+}
+
+@media only screen  and (max-width: 739px) {
+    .mobile {
+        display: block;
+    }
+}
+
+/* tablet >= 740px and <1024px */
+
+@media only screen and (min-width: 740px) and ( max-width: 1023px){
+    .tablet{
+        display: block;
+    }
+}
+
+/* pc >= 1024px */
+
+
+
+
