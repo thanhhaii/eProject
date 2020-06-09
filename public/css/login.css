@@ -29,6 +29,7 @@ body{
   width: 400px;
   color: black;
   border-radius: 24px;
+  outline: none;
 }
 .box input[type = "submit"]{
   background: black;
@@ -54,7 +55,7 @@ body{
 }
 
 .box input[type = "submit"]:hover{
-  background: black;
+  background: black; }
 .box input[type = "submit"]:hover{
   background: black;
 }

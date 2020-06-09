@@ -1,10 +1,10 @@
 <?php
-    include_once "../validation/Error.php";
+    include_once "../validation/ErrorPHP.php";
     class Database
     {
         private $host ="mysql:host = localhost; dbname = eProject; charset = utf8";
-        private $username = "eProject";
-        private $password = "aptech";
+        private $username = "root";
+        private $password = "";
         private $pdo;
         private $stmt;
 
@@ -12,8 +12,8 @@
         {
             try {
                 $this->pdo = new PDO($this->host, $this->username, $this->password);
-            }catch (Exception $e){
-                Error::showMessage($e->getMessage());
+            }catch (PDOException $e){
+                ErrorPHP::showMessage($e->getMessage());
             }
         }
 
@@ -23,17 +23,18 @@
                 $this->stmt->execute($param);
                 return $this->stmt;
             }catch (Exception $e){
-                   Error::showMessage($e->getMessage());
+                   ErrorPHP::showMessage($e->getMessage());
             }
         }
 
-        public function queryData($query)   {
+        public function selectData($query)
+        {
             try {
                 $this->stmt = $this->pdo->prepare($query);
                 $this->stmt->execute();
                 return $this->stmt;
             }catch (Exception $e){
-                Error::showMessage($e->getMessage());
+                ErrorPHP::showMessage($e->getMessage());
             }
         }
     }

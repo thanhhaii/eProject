@@ -1,3 +1,9 @@
+<?php
+    require_once "../connect/Database.php";
+    $db = new Database();
+    $query = "select * from product FULL JOIN ";
+    $stmt = $db->selectData($query);
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,7 +21,7 @@
     <main class="container-fluid">
         <header class="row">
             <nav class="col-md-12">
-                <div class="col-md-12 fixed-top fix">
+                <div class="col-md-12">
                     <div class="col-md-12 text-center">
                         <img src="image/logo.png" class="logo">
                         <img src="image/tasha.png" class="bannerTasha">
@@ -23,8 +29,8 @@
                     <div class="col-md-12 clearfix">
                         <div class="col-md-2 float-right header-login">
                             <img src="image/user.png" class="userIcon">
-                            <a href="">Sign in</a> / 
-                            <a href="">Sign up</a>
+                            <a href="login.php">Sign in</a> /
+                            <a href="signup.php">Sign up</a>
                         </div>
                         <div class="col-md-8 text-center float-right">
                             <form action="">
@@ -34,8 +40,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12" style="height: 120px;">
-
                 </div>
                 <div class="col-md-12 menu text-center mt-4">
                     <ul class="mb-0">
@@ -60,29 +64,26 @@
             </nav>
         </header>
         <div class="col-md-12 mt-1 clearfix">
-            <div class="col-md-1 product float-left" ></div>
-            <nav class="col-md-3 float-left">
-                <div class="card mt-1 mr-5">
-                    <div class="card-header p-2">
-                        <img src="image/icon/shopping-cart-solid.svg" class="icon">
-                        <span>Cart</span>
-                    </div>
-                    <div class="cart-body product">
-
-                    </div>
-                    <div class="card-footer p-2">
-                        <img src="image/icon/money-check-alt-solid.svg" class="icon"><span class="ml-1">Total</span>
+            <div class="col-md-1 float-left" style="height: 100px;"></div>
+            <div class="col-md-10 float-left">
+                <?php for($i = 1; $i <=24 ; $i++): ?>
+                <div class="card float-left ml-2 mt-2" style="width: 235px; height: 300px">
+                    <img src="" alt="" class="card-img-top ml-4 mt-2" style="width: 200px; height: 200px">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text"></p>
+                        <a href="" class="btn btn-primary"></a>
                     </div>
                 </div>
-            </nav>
-            <article class="col-md-7 float-left">
-
-            </article>
+                <?php endfor; ?>
+            </div>
         </div>
-        <!-- <footer class="">
-            <div> </div>
-            <div style="width: 100%; background-color: #1A1A1A; height: 40px;"></div>
-        </footer> -->
+        <footer class="col-md-12">
+            <div class="mt-2" style="height: 300px; background-color: #a0abbb;"></div>
+            <div class="text-center" style="width: 100%; background-color: #1A1A1A; height: 40px;">
+                <p class="mb-0" style="color: white; line-height: 40px">Copyright 2020 &copy; <span class="font-weight-bold">TASHA - THE HOME STORE</span></p>
+            </div>
+        </footer>
     </main>
     <script src="bootstrap/js/jquery-3.5.1.slim.min.js"></script>
     <script src="bootstrap/js/popper.min.js"></script>
