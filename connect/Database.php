@@ -1,10 +1,10 @@
 <?php
-    include_once "../validation/ErrorPHP.php";
+     require_once "../validation/ErrorPHP.php";
     class Database
     {
-        private $host ="mysql:host = localhost; dbname = eProject; charset = utf8";
-        private $username = "root";
-        private $password = "";
+        private $host ="mysql:host=localhost; dbname=eproject; charset=utf8";
+        private $username = "eProject";
+        private $password = "aptech";
         private $pdo;
         private $stmt;
 
@@ -12,7 +12,7 @@
         {
             try {
                 $this->pdo = new PDO($this->host, $this->username, $this->password);
-            }catch (PDOException $e){
+            }catch (Exception $e){
                 ErrorPHP::showMessage($e->getMessage());
             }
         }

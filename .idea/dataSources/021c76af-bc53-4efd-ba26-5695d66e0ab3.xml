@@ -1318,16 +1318,22 @@ id_product</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="389" parent="341" name="FK_product_category">
+    <column id="389" parent="341" name="avatar">
+      <Position>8</Position>
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="390" parent="341" name="FK_product_category">
       <ColNames>category_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="390" parent="341" name="PRIMARY">
+    <key id="391" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_product</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="391" parent="341" name="FK_product_category">
+    <foreign-key id="392" parent="341" name="FK_product_category">
       <ColNames>category_id</ColNames>
       <RefTableName>category</RefTableName>
       <RefColNames>category_id</RefColNames>

@@ -43,7 +43,6 @@ body{
     cursor: pointer;
     border-radius: 9px ;
     margin: 20px auto;
-
 }
 
 .box input[type = "submit"]:hover {

@@ -13,10 +13,10 @@
         <input type="password" name="password" placeholder="Password">
         <div class="www">
             <div class="login">
-                <input type="submit" name="" value="Login">
+                <input type="submit" name="login" value="Login">
             </div>
-            <div class="signup" >
-                <input type="submit" name="" value="Sign up">
+            <div class="signup">
+                <input type="submit" name="signup" value="Sign up">
             </div>
         </div>
     </form>

@@ -1,7 +1,7 @@
 <?php
     require_once "../connect/Database.php";
     $db = new Database();
-    $query = "select * from product FULL JOIN ";
+    $query = "select * from product";
     $stmt = $db->selectData($query);
 ?>
 <!doctype html>
@@ -15,7 +15,6 @@
     <link rel="shortcut icon" type="image/png" href="image/logo.png"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://kit.fontawesome.com/55d46ee21c.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <main class="container-fluid">
@@ -64,18 +63,18 @@
             </nav>
         </header>
         <div class="col-md-12 mt-1 clearfix">
-            <div class="col-md-1 float-left" style="height: 100px;"></div>
-            <div class="col-md-10 float-left">
-                <?php for($i = 1; $i <=24 ; $i++): ?>
-                <div class="card float-left ml-2 mt-2" style="width: 235px; height: 300px">
-                    <img src="" alt="" class="card-img-top ml-4 mt-2" style="width: 200px; height: 200px">
+            <div class="col-xl-1 float-left" style="height: 100px;"></div>
+            <div class="col-xl-10 col-lg-12 float-left">
+                <?php while ($result = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+                <div class="card float-left ml-2 mt-2" style="width: 235px; height: 350px">
+                    <img src="image/product/<?= $result['avatar'] ?>" alt="" class="card-img-top ml-4 mt-2" style="width: 200px; height: 200px">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <p class="card-text"></p>
-                        <a href="" class="btn btn-primary"></a>
+                        <h5 class="card-title" style="height: 35px"><?= $result['name_pro'] ?></h5>
+                        <p class="card-text m-0 mb-1 text-danger"><?= $result['price'] ?>.00$</p>
+                        <a href="product.php?id=<?= $result['id_product'] ?>" class="btn btn-primary">Product Details</a>
                     </div>
                 </div>
-                <?php endfor; ?>
+                <?php endwhile; ?>
             </div>
         </div>
         <footer class="col-md-12">
