@@ -71,7 +71,7 @@
                     <div class="card-body">
                         <h5 class="card-title" style="height: 35px"><?= $result['name_pro'] ?></h5>
                         <p class="card-text m-0 mb-1 text-danger"><?= $result['price'] ?>.00$</p>
-                        <a href="product.php?id=<?= $result['id_product'] ?>" class="btn btn-primary">Product Details</a>
+                        <a href="product.php?id=<?= $result['id_product'] ?>&category=<?= $result['category_id'] ?>" class="btn btn-primary">Product Details</a>
                     </div>
                 </div>
                 <?php endwhile; ?>

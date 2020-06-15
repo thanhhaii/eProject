@@ -3,8 +3,8 @@
     class Database
     {
         private $host ="mysql:host=localhost; dbname=eproject; charset=utf8";
-        private $username = "eProject";
-        private $password = "aptech";
+        private $username = "root";
+        private $password = "";
         private $pdo;
         private $stmt;
 

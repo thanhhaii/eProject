@@ -6,6 +6,9 @@
         $query = "SELECT * FROM product JOIN image ON product.id_product = image.id_product WHERE product.id_product =:id";
         $param = [ "id" => $id ];
         $stmt = $db->queryDataParam($query, $param);
+        $query2 = "SELECT * FROM product JOIN category ON product.category_id = category.category_id WHERE product.category_id =:category_id";
+        $param2 = [ "category_id" => $_GET['category'] ];
+        $stmt2 = $db->queryDataParam($query2,$param2);
     else:
 //        header('location:index.php');
     endif;
@@ -88,22 +91,34 @@
                     <button type="button" class="btn btn-primary" id="addtocart">Add to cart</button>
                 </div>
             </div>
+
+        </div>
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-12">
+                <div class="col-xl-1 float-left" style="height: 100px;"></div>
+                <div class="col-xl-10 float-left">
                     <hr>
                     <p class="h3 mt-3">Related product</p>
                     <div class="row">
-                            <div class="card float-left ml-2 mt-2" style="width: 235px; height: 350px">
-                                <img src="image/product/<?= $result['avatar'] ?>" alt="" class="card-img-top ml-4 mt-2" style="width: 200px; height: 200px">
+                        <?php while ($result2 = $stmt2->fetch(PDO::FETCH_ASSOC)): ?>
+                            <div class="card float-left ml-4 mt-3" style="width: 235px; height: 350px">
+                                <img src="image/product/<?= $result2['avatar'] ?>" alt="" class="card-img-top ml-4 mt-2" style="width: 200px; height: 200px">
                                 <div class="card-body">
-                                    <h5 class="card-title" style="height: 35px"><?= $result['name_pro'] ?></h5>
-                                    <p class="card-text m-0 mb-1 text-danger"><?= $result['price'] ?>.00$</p>
-                                    <a href="product.php?id=<?= $result['id_product'] ?>" class="btn btn-primary">Product Details</a>
+                                    <h5 class="card-title" style="height: 35px"><?= $result2['name_pro'] ?></h5>
+                                    <p class="card-text m-0 mb-1 text-danger"><?= $result2['price'] ?>.00$</p>
+                                    <a href="product.php?id=<?= $result2['id_product'] ?>" class="btn btn-primary">Product Details</a>
                                 </div>
                             </div>
+                        <?php endwhile; ?>
                     </div>
                 </div>
             </div>
+            <footer class="col-md-12">
+                <div class="mt-2" style="height: 300px; background-color: #a0abbb;"></div>
+                <div class="text-center" style="width: 100%; background-color: #1A1A1A; height: 40px;">
+                    <p class="mb-0" style="color: white; line-height: 40px">Copyright 2020 &copy; <span class="font-weight-bold">TASHA - THE HOME STORE</span></p>
+                </div>
+            </footer>
         </div>
     </div>
 </body>

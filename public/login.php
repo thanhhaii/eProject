@@ -1,3 +1,36 @@
+<?php
+    session_start();
+    require_once '../connect/Database.php';
+    $db = new Database();
+    if($_SERVER['REQUEST_METHOD'] == 'POST'):
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        if($username == "" || $password == ""):
+            $hidden = 1;
+        else:
+            $query = "select username, password from account where username =:username";
+            $param = [
+                'username' => $username
+            ];
+            $stmt = $db->queryDataParam($query, $param);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $count = count($result['username']);
+            if($count = 1):
+                if(password_hash($password,$result['password'])):
+                    if(isset($_POST['rememberlogin'])):
+                        setcookie("username", $username, time()+36000);
+                    endif;
+                    $_SESSION['username'] = $username;
+                    header('location:index.php');
+                else:
+                    $hidden = 1;
+                endif;
+            else:
+                $hidden = 1;
+            endif;
+        endif;
+    endif;
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -7,17 +40,22 @@
     <link rel="shortcut icon" type="image/png" href="image/logo.png"/>
 </head>
 <body>
+    <div class="error w-100 fixed-top"  style="background-color: red; font-size: 16px; height: 25px; color: #ffffff; padding-top: 5px" <?= isset($hidden)? "" : "hidden" ?>>
+        <span style="margin: 10px 5px; ">Username or password incorrect</span>
+    </div>
     <form class="box" action="login.php" method="post">
         <h1>Login</h1>
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="Password">
+        <input type="checkbox" name="rememberlogin" id="rememberlogin" value="1">
+        <label for="rememberlogin">Remember login</label>
         <div class="www">
             <div class="login">
                 <input type="submit" name="login" value="Login">
             </div>
-            <div class="signup">
-                <input type="submit" name="signup" value="Sign up">
-            </div>
+<!--            <div class="signup">-->
+<!--                <input type="submit" name="signup" value="Sign up">-->
+<!--            </div>-->
         </div>
     </form>
 </body>
