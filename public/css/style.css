@@ -9,92 +9,147 @@ a {
     color: black;
 }
 
-@media only screen and (min-width: 1024px){
-    .logo {
+.container {
+    max-width: 1200px;
+}
+
+.logo {
         width: 70px;
-    }
-
-    .bannerTasha {
-        width: 200px;
-    }
-
-    .userIcon {
-        width: 25px;
-    }
-
-    .header-login {
-        margin-top: 20px;
-    }
-
-    .search {
-        margin-top: 20px;
-        border: none;
-        border-bottom: 1px solid #070707;
-        width: 400px;
-        outline: none;
-        margin-left: 30px;
-        
-    }
-
-    .submit {
-        background-color: white;
-        border:none;
-    }
-
-    .menu ul {
-        list-style-type: none;
-        font-weight: 800;
-        background-color: #E1E1E1;
-        height: 40px;
-    }
-
-    .menu ul li {
-        display: inline;
-        padding: 0 80px;
-        font-size: 25px;
-        margin-bottom: 10px;
-    }
-
-    .category {
-        width: 100%;
-        height: 150px;
-        background-color: #B4B4B4;
-        border-bottom-right-radius: 10px;
-    }
-
-    .subcategory {
-        width: 130px;
-        height: 130px;
-        margin: 4px;
-        background-color: white;
-    }
-
-    .icon {
-        height: 16px;
-        border: none;
-        margin-bottom: 5px;
-    }
-
-    .product {
-        height: 200px;
-    }
 }
 
-@media only screen  and (max-width: 739px) {
-    .mobile {
-        display: block;
-    }
+.bannerTasha {
+    width: 200px;
 }
 
-/* tablet >= 740px and <1024px */
-
-@media only screen and (min-width: 740px) and ( max-width: 1023px){
-    .tablet{
-        display: block;
-    }
+.userIcon {
+    width: 25px;
 }
 
-/* pc >= 1024px */
+.header-login {
+    margin-top: 20px;
+}
+
+.search {
+    margin-top: 20px;
+    border: none;
+    border-bottom: 1px solid #070707;
+    width: 400px;
+    outline: none;
+    margin-left: 30px;
+}
+
+.submit {
+    background-color: white;
+    border:none;
+}
+
+.menu ul {
+    list-style-type: none;
+    font-weight: 800;
+    background-color: #E1E1E1;
+    height: 40px;
+}
+
+.menu ul li {
+    display: inline;
+    padding: 0 80px;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.category {
+    height: 220px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    display: block;
+}
+
+.category_img {
+    width: 125px;
+    border-radius: 10px;
+}
+
+.subcategory {
+    width: 125px;
+    height: 125px;
+    margin: 5px 10px;
+    background-color: red;
+    float: left;
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+}
+
+.subcategory:hover {
+    cursor: pointer;
+}
+
+.icon {
+    height: 16px;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.contact {
+    border-left: 5px solid #d3d3d3;
+}
+
+.about-img__logo {
+    width: 50px;
+}
+
+.about-img__tasha {
+    width: 100px;
+    margin-top: 5px;
+}
+
+.style_prevu_kit
+    {
+    display:inline-block;
+    border:0;
+    position: relative;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+
+}
+
+.style_prevu_kit:hover{
+    box-shadow: 0px 0px 10px #4e555b;
+    z-index: 2;
+    -webkit-transition: all 150ms ease-in;
+    -webkit-transform: scale(1.01);
+    -ms-transition: all 150ms ease-in;
+    -ms-transform: scale(1.01);
+    -moz-transition: all 150ms ease-in;
+    -moz-transform: scale(1.01);
+    transition: all 150ms ease-in;
+    transform: scale(1.01);
+    border: 1px solid coral;
+    background-color: #f5f5f5;
+}
+
+.size-product {
+    width: 190px;
+    height: 285px;
+    border: 1px solid #E1E1E1;
+}
+
+#seemore {
+    margin: 20px auto 0;
+    border: 1px solid #E1E1E1;
+    width: 100px;
+    border-radius: 5px;
+}
+
+#seemore:hover {
+    cursor: pointer;
+    border: 2px solid #E1E1E1;
+}
 
 
 
