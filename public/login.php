@@ -38,25 +38,35 @@
     <title>َTASHA - Login</title>
     <link rel="stylesheet" href="css/login.css">
     <link rel="shortcut icon" type="image/png" href="image/logo.png"/>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <script src="bootstrap/js/jquery-3.5.0.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="error w-100 fixed-top"  style="background-color: red; font-size: 16px; height: 25px; color: #ffffff; padding-top: 5px" <?= isset($hidden)? "" : "hidden" ?>>
-        <span style="margin: 10px 5px; ">Username or password incorrect</span>
-    </div>
-    <form class="box" action="login.php" method="post">
-        <h1>Login</h1>
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="checkbox" name="rememberlogin" id="rememberlogin" value="1">
-        <label for="rememberlogin">Remember login</label>
-        <div class="www">
-            <div class="login">
-                <input type="submit" name="login" value="Login">
-            </div>
-<!--            <div class="signup">-->
-<!--                <input type="submit" name="signup" value="Sign up">-->
-<!--            </div>-->
+    <div class="container">
+        <a href="index.php">
+            <div class="position-fixed home text" >Home</div>
+        </a>
+        <div class="error w-100 fixed-top"  style="background-color: red; font-size: 16px; height: 25px; color: #ffffff; padding-top: 5px" <?= isset($hidden)? "" : "hidden" ?>>
+            <span style="margin: 10px 5px; ">Username or password incorrect</span>
         </div>
-    </form>
+        <form class="box" action="login.php" method="post">
+            <h1>Login</h1>
+            <input type="text" name="username" placeholder="Username" autocomplete="off">
+            <input type="password" name="password" placeholder="Password">
+            <input type="checkbox" name="rememberlogin" id="rememberlogin" value="1">
+            <label for="rememberlogin" class="mb-1 mt-1">Remember login</label>
+            <div class="www">
+                <div class="login">
+                    <input type="submit" name="login" value="Login">
+                </div>
+                <a href="signup.php">
+                    <div class="signup">
+                        <p class="text">Sign up</p>
+                    </div>
+                </a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

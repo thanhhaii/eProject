@@ -9,6 +9,11 @@ a {
     color: black;
 }
 
+a:hover {
+    text-decoration: none;
+    color: #4e555b;
+}
+
 .container {
     max-width: 1200px;
 }
@@ -36,6 +41,21 @@ a {
     width: 400px;
     outline: none;
     margin-left: 30px;
+}
+
+#search_button:hover {
+    cursor: pointer;
+}
+
+.account {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.account:hover {
+    background-color: #4e555b;
+    color: white;
 }
 
 .submit {
@@ -87,10 +107,6 @@ a {
     height: 16px;
     border: none;
     margin-bottom: 5px;
-}
-
-.contact {
-    border-left: 5px solid #d3d3d3;
 }
 
 .about-img__logo {

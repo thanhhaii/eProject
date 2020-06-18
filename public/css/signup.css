@@ -42,12 +42,48 @@ body{
     width: 150px;
     cursor: pointer;
     border-radius: 9px ;
-    margin: 20px auto;
+    margin: 20px;
+    float: left;
 }
 
 .box input[type = "submit"]:hover {
     background: black;
 }
+
+.login {
+    float: right;
+    text-align: center;
+    padding: 14px 40px;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 10px;
+    text-transform: uppercase;
+    display: block;
+    cursor: pointer;
+    margin: 20px;
+    display: block;
+    float: right;
+}
+
+.text {
+    margin: 0;
+    color: white;
+}
+
+.home {
+    width: 100px;
+    background-color: black;
+    height: 50px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 50px;
+    top: 30px;
+    left: 30px;
+    border: 1px solid black;
+    color: white;
+    box-shadow: 3px 3px 5px 0px #666;
+}
+
 
 
 

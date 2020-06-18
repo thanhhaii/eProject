@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="bootstrap/js/jquery-3.5.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="scss/style.scss">
     <script src="js/style.js"></script>
 </head>
 <body>
@@ -34,14 +35,13 @@
                     <div class="col-md-12 clearfix">
                         <div class="col-md-2 float-right header-login">
                             <img src="image/user.png" class="userIcon">
-                            <a href="login.php">Sign in</a>
-                            <a href="signup.php">Sign up</a>
+                            <a href="login.php" class="account" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? 'hidden' : '' ?>>Login</a>
+                            <a href="signup.php" class="account" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? 'hidden' : '' ?>>Sign up</a>
+
                         </div>
                         <div class="col-md-8 text-center float-right">
-                            <form action="">
-                                <input type="text" name="search" class="search" placeholder="Search">
-                                <button type="submit" class="submit"><img src="image/icons8-search-24.png" ></button>
-                            </form>
+                            <input type="text" name="search" class="search" id="search" placeholder="Search">
+                            <img src="image/icons8-search-24.png" id="search_button">
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                     <hr/>
                     <p class="font-weight-bold">Thanks you!</p>
                 </div>
-                <div class="col-xl-2 float-left h-100 contact">
+                <div class="col-xl-2 float-left h-100">
                     <p class="font-weight-bold h2 mt-3 ml-2">Contact</p>
                     <hr/>
                     <p class="ml-2">Phone: +84965140743</p>

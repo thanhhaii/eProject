@@ -13,6 +13,10 @@
         $query = "SELECT * FROM product JOIN category ON product.category_id = category.category_id WHERE category.category_id =:category_id";
         $param = [ 'category_id'=> $_GET['category']];
         $stmt = $db->queryDataParam($query, $param);
+    elseif (isset($_GET['search'])):
+        unset($_GET['page'], $_GET['category']);
+        $query = "SELECT * FROM product WHERE name_pro like '%{$_GET['search']}%'";
+        $stmt = $db->selectData($query);
     endif;
     while ($result = $stmt->fetch(PDO::FETCH_ASSOC)):
 ?>

@@ -3,6 +3,25 @@ body{
   padding: 0;
   font-family: sans-serif;
 }
+
+a {
+  color: white;
+}
+
+.home {
+  width: 100px;
+  background-color: black;
+  height: 50px;
+  border-radius: 50px;
+  text-align: center;
+  line-height: 50px;
+  top: 30px;
+  left: 30px;
+  border: 1px solid black;
+  color: white;
+  box-shadow: 3px 3px 5px 0px #666;
+}
+
 .box{
   width: 500px;
   padding: 40px;
@@ -42,16 +61,30 @@ body{
   width: 150px;
   cursor: pointer;
   border-radius: 9px ;
+  border: 2px solid white;
 }
 .login {
   float: left;
-  padding-left: 20px;
   margin: 20px;
 }
-.signup{
+
+.signup {
   float: right;
-  padding-right: 20px;
+  text-align: center;
+  padding: 14px 40px;
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 10px;
+  text-transform: uppercase;
+  display: block;
+  cursor: pointer;
   margin: 20px;
+  display: block;
+}
+
+.text {
+  margin: 0;
+  color: white;
 }
 
 .box input[type = "submit"]:hover{
