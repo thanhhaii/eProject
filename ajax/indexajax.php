@@ -20,7 +20,7 @@
     endif;
     while ($result = $stmt->fetch(PDO::FETCH_ASSOC)):
 ?>
-        <a href="product.php?id=<?= $result['id_product'] ?>">
+        <a href="../public/product.php?id=<?= $result['id_product'] ?>">
             <div class="card float-left ml-2 mt-2 style_prevu_kit size-product" style="width: 190px; height: 285px">
                 <img src="../public/image/product/<?= $result['avatar'] ?>" class="card-img-top img-card" height="188px" width="188px">
                 <div class="card-body">

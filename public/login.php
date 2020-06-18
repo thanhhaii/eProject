@@ -16,7 +16,7 @@
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             $count = count($result['username']);
             if($count = 1):
-                if(password_hash($password,$result['password'])):
+                if(password_verify($password,$result['password'])):
                     if(isset($_POST['rememberlogin'])):
                         setcookie("username", $username, time()+36000);
                     endif;
@@ -29,6 +29,9 @@
                 $hidden = 1;
             endif;
         endif;
+    endif;
+    if(isset($_SESSION['username']) or isset($_COOKIE['username'])):
+        header('location: index.php');
     endif;
 ?>
 <!DOCTYPE html>
@@ -47,8 +50,8 @@
         <a href="index.php">
             <div class="position-fixed home text" >Home</div>
         </a>
-        <div class="error w-100 fixed-top"  style="background-color: red; font-size: 16px; height: 25px; color: #ffffff; padding-top: 5px" <?= isset($hidden)? "" : "hidden" ?>>
-            <span style="margin: 10px 5px; ">Username or password incorrect</span>
+        <div class="error w-100 fixed-top"  style="background-color: red; font-size: 16px; height: 25px; color: #ffffff;" <?= isset($hidden)? "" : "hidden" ?>>
+            <span style="margin: 5px 5px; ">Username or password incorrect</span>
         </div>
         <form class="box" action="login.php" method="post">
             <h1>Login</h1>

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once "../connect/Database.php";
     $db = new Database();
     $query = "SELECT * FROM product LIMIT 1, 12";
@@ -6,6 +7,15 @@
 
     $query_category = "select * from category";
     $stmt_category = $db->selectData($query_category);
+    if(isset($_SESSION['username']) || isset($_COOKIE['username'])):
+        if(isset($_COOKIE['username']) and empty($_SESSION['username'])):
+            $_SESSION['username'] = $_COOKIE['username'];
+        endif;
+        $query_account = "select * from account where username =:username and roles = client";
+        $param_account = ['username'=>$_SESSION['username']];
+        $stmt_account = $db->queryDataParam($query_account, $param_account);
+        $result_account = $stmt_account->fetch(PDO::FETCH_ASSOC);
+    endif;
 ?>
 <!doctype html>
 <html lang="en">
@@ -17,11 +27,10 @@
     <title>TASHA - The Home Store</title>
     <link rel="shortcut icon" type="image/png" href="image/logo.png"/>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="bootstrap/js/jquery-3.5.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="scss/style.scss">
-    <script src="js/style.js"></script>
+    <script src="js/index.js"></script>
 </head>
 <body>
     <main class="container-fluid">
@@ -37,7 +46,41 @@
                             <img src="image/user.png" class="userIcon">
                             <a href="login.php" class="account" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? 'hidden' : '' ?>>Login</a>
                             <a href="signup.php" class="account" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? 'hidden' : '' ?>>Sign up</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? '' : '' ?>>
+                                <?= isset($_SESSION['username']) || isset($_COOKIE['username'])?  $_SESSION['username'] : ''; ?>
+                            </button>
 
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Account Information</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" class="form-control" id="exampleInputEmail1" value="<?= isset($result_account['email'])? $result_account['email'] : ''?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="phone">Phone number</label>
+                                                    <input type="number" class="form-control" id="phone" value="<?= isset($result_account['phone'])? $result_account['phone'] : ''?>">
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-8 text-center float-right">
                             <input type="text" name="search" class="search" id="search" placeholder="Search">
