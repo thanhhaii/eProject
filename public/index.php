@@ -31,6 +31,9 @@
     <script src="bootstrap/js/jquery-3.5.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
+    <script>
+        console.log('<?= $result_account['email'] ?>');
+    </script>
 </head>
 <body>
     <main class="container-fluid">
@@ -48,8 +51,9 @@
                             <a href="signup.php" class="account" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? 'hidden' : '' ?>>Sign up</a>
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? '' : '' ?>>
-                                <?= isset($_SESSION['username']) || isset($_COOKIE['username'])?  $_SESSION['username'] : ''; ?>
+                                <?= isset($_SESSION['username']) || isset($_COOKIE['username'])?  $_SESSION['username'] : 'hidden'; ?>
                             </button>
+                            <button class="btn btn-secondary">Log out</button>
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -65,7 +69,7 @@
                                             <form action="">
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail1" value="<?= isset($result_account['email'])? $result_account['email'] : ''?>">
+                                                    <input type="email" class="form-control" id="exampleInputEmail1" value="<?= $result_account['email'] ?>">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="phone">Phone number</label>

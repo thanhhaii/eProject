@@ -47,7 +47,7 @@ a {
   padding: 14px 10px;
   width: 400px;
   color: black;
-  border-radius: 24px;
+  border-radius: 10px;
   outline: none;
 }
 .box input[type = "submit"]{

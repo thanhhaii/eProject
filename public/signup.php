@@ -20,7 +20,7 @@
         $stmt = $db->queryDataParam($query, $param);
         header('location: login.php');
     endif;
-?>
+//?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,13 +38,19 @@
     <a href="index.php">
         <div class="position-fixed home text" >Home</div>
     </a>
-    <form class="box" action="signup.php" method="post">
+    <form class="box" action="" method="post">
         <h1>Sign Up</h1>
-        <input type="text" name="username" placeholder="Username" id="username">
-        <input type="password" name="password" placeholder="Password">
-        <input type="email" name="email" placeholder="Email">
-        <input type="text" name="phone" placeholder="Phone Number">
-        <input type="submit" name="register" value="Register">
+        <div>
+            <input type="text" name="username" placeholder="Username" id="username"  autocomplete="off">
+        </div>
+        <span id="errorUsername"></span>
+        <input type="password" name="password" placeholder="Password" id="password">
+        <span id="errorPassword"></span>
+        <input type="email" name="email" placeholder="Email" id="email"  autocomplete="off">
+        <span id="errorEmail"></span>
+        <input type="number" name="phone" placeholder="Phone Number" id="phone" autocomplete="off">
+        <span id="errorPhone"></span>
+        <input type="submit" name="register" value="Register" id="submit" >
         <a href="login.php">
             <div class="login">
                 <p class="text">&nbsp;Login&nbsp;&nbsp;</p>

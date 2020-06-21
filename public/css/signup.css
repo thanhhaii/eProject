@@ -20,7 +20,7 @@ body{
     text-transform: uppercase;
     font-weight: 500;
 }
-.box input[type = "text"],.box input[type = "password"],.box input[type = "email"]{
+.box input[type = "text"],.box input[type = "password"],.box input[type = "email"],.box input[type = number]{
     background: white;
     display: block;
     margin: 20px auto;
@@ -28,10 +28,10 @@ body{
     padding: 14px 10px;
     width: 400px;
     color: black;
-    border-radius: 24px;
+    border-radius: 10px;
     outline: none;
 }
-.box input[type = "submit"]{
+#submit{
     background: black;
     text-transform: uppercase;
     display: block;
@@ -84,6 +84,21 @@ body{
     box-shadow: 3px 3px 5px 0px #666;
 }
 
+#errorUsername, #errorPhone, #errorEmail, #errorPassword {
+    position: absolute;
+    left: 50px;
+    font-size: 12px;
+    display: none;
+    color: red;
+}
+
+#errorUsername { top: 162px;}
+
+#errorPassword { top: 238px;}
+
+#errorEmail { top: 314px; }
+
+#errorPhone { top: 390px }
 
 
 
