@@ -14,7 +14,7 @@
             ];
             $stmt = $db->queryDataParam($query, $param);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            $count = count($result['username']);
+            $count = is_countable($result);
             if($count = 1):
                 if(password_verify($password,$result['password'])):
                     if(isset($_POST['rememberlogin'])):

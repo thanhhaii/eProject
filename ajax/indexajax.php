@@ -1,6 +1,9 @@
 <?php
+    session_start();
     require_once "../connect/Database.php";
     $db = new Database();
+
+
     if(isset($_GET['page'])):
         $newsonepage = 12;
         $page = $_GET['page'];

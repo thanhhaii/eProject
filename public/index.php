@@ -7,14 +7,21 @@
 
     $query_category = "select * from category";
     $stmt_category = $db->selectData($query_category);
-    if(isset($_SESSION['username']) || isset($_COOKIE['username'])):
+    if(isset($_SESSION['username']) or isset($_COOKIE['username'])):
         if(isset($_COOKIE['username']) and empty($_SESSION['username'])):
             $_SESSION['username'] = $_COOKIE['username'];
         endif;
-        $query_account = "select * from account where username =:username and roles = client";
-        $param_account = ['username'=>$_SESSION['username']];
-        $stmt_account = $db->queryDataParam($query_account, $param_account);
+        $username = $_SESSION['username'];
+        $query_account = "select * from account where (username = '$username' and roles = 'client')";
+        $stmt_account = $db->selectData($query_account);
         $result_account = $stmt_account->fetch(PDO::FETCH_ASSOC);
+    endif;
+
+    if(isset($_POST['logout'])):
+        if(isset($_COOKIE['username'])):
+            setcookie("username",$_SESSION['username'], time()-36000);
+        endif;
+        unset($_SESSION['username']);
     endif;
 ?>
 <!doctype html>
@@ -31,9 +38,6 @@
     <script src="bootstrap/js/jquery-3.5.0.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
-    <script>
-        console.log('<?= $result_account['email'] ?>');
-    </script>
 </head>
 <body>
     <main class="container-fluid">
@@ -46,15 +50,16 @@
                     </div>
                     <div class="col-md-12 clearfix">
                         <div class="col-md-2 float-right header-login">
-                            <img src="image/user.png" class="userIcon">
-                            <a href="login.php" class="account" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? 'hidden' : '' ?>>Login</a>
-                            <a href="signup.php" class="account" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? 'hidden' : '' ?>>Sign up</a>
+                            <img src="image/user.png" class="userIcon float-left mt-2 mr-2">
+                            <a href="login.php" class="account position-relative" style="top: 8px" <?= isset($_SESSION['username'])? 'hidden' : '' ?>>Login</a>
+                            <a href="signup.php" class="account position-relative" style="top: 8px" <?= isset($_SESSION['username'])? 'hidden' : '' ?>>Sign up</a>
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" <?= isset($_SESSION['username']) || isset($_COOKIE['username'])? '' : '' ?>>
-                                <?= isset($_SESSION['username']) || isset($_COOKIE['username'])?  $_SESSION['username'] : 'hidden'; ?>
+                            <button type="button" class="btn btn-primary float-left mr-2" data-toggle="modal" data-target="#exampleModal" <?= isset($_SESSION['username'])? $_SESSION['username'] : 'hidden' ?>>
+                                <?= isset($_SESSION['username']) || isset($_COOKIE['username'])?  $_SESSION['username'] : ''; ?>
                             </button>
-                            <button class="btn btn-secondary">Log out</button>
-
+                            <form action="#" method="post" class="float-left">
+                                <button type="submit" name="logout" class="btn btn-secondary" <?= isset($_SESSION['username'])? '' : 'hidden' ?>>Log out</button>
+                            </form>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -73,9 +78,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="phone">Phone number</label>
-                                                    <input type="number" class="form-control" id="phone" value="<?= isset($result_account['phone'])? $result_account['phone'] : ''?>">
+                                                    <input type="number" class="form-control" id="phone" value="0<?= $result_account['phone'] ?>">
                                                 </div>
-
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -87,7 +91,7 @@
                             </div>
                         </div>
                         <div class="col-md-8 text-center float-right">
-                            <input type="text" name="search" class="search" id="search" placeholder="Search">
+                            <input type="text" name="search" class="search" id="search" placeholder="Search" autocomplete="off">
                             <img src="image/icons8-search-24.png" id="search_button">
                         </div>
                     </div>
