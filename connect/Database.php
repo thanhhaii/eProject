@@ -1,4 +1,5 @@
 <?php
+
      require_once "../validation/ErrorPHP.php";
     class Database
     {

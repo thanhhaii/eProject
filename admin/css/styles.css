@@ -1031,3 +1031,28 @@ p.back-link {
   margin-bottom: 20px;
   font-size: 12px;
   text-transform: uppercase; }
+
+.client {
+  margin: 5px;
+}
+
+.admin {
+  margin: 5px 5px 5px 0;
+}
+
+.all {
+  margin-left: 5px;
+}
+
+.search {
+  margin: 5px;
+}
+
+.input-search {
+  margin: 5px;
+  width: 200px;
+}
+
+
+
+.float-left {float:left;}.float-right{float:right;}
