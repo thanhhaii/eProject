@@ -28,8 +28,6 @@
                 'avatar'    => $photo,
                 'id_product'=> $_GET['id']
             ];
-            $db->queryDataParam($query, $param);
-            header('location: product.php');
         else:
             $query = "INSERT INTO product(name_pro, price, quantity, content, status, category_id, avatar) VALUES(:name_pro, :price, :quantity, :content, :status, :category_id, :avatar)";
             $param =[
@@ -41,9 +39,9 @@
                 'category_id' => $_POST['category'],
                 'avatar'    => $photo
             ];
-            $db->queryDataParam($query, $param);
-            header('location: product.php');
         endif;
+        $db->queryDataParam($query, $param);
+        header('location: product.php');
     endif;
 ?>
 <!doctype html>

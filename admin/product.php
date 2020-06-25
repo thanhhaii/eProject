@@ -60,14 +60,14 @@
         <div class="row">
             <div class="">
                 <div class="col-sm-4 float-left">
-                    <button class="btn btn-info product all">Product</  button>
+                    <button class="btn btn-info product all">Product</button>
                     <button class="btn btn-primary category client">Category</button>
                     <button class="btn btn-success img_pro admin">Image Product</button>
                 </div>
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control float-left input-search" placeholder="Search" style="width: 200px; height: 35px;">
-                    <button class="btn btn-primary search float-left">Search</button>
+                    <input type="text" class="form-control float-left input-search" placeholder="Search (ID or Name)" style="width: 200px; height: 35px;">
+                    <button class="btn btn-primary search float-left" value="product">Search</button>
                     <a class="btn btn-success add_button" style="margin-top: 5px" href="actionProduct.php">Add Product</a>
                 </div>
             </div>
